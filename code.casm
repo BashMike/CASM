@@ -1,0 +1,7 @@
+    .memory 32
+
+    add #0008 #000C
+    add #0009 #000D
+    add #000A #000E
+    add #000B #000F
+    uof

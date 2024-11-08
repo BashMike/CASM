@@ -1,0 +1,29 @@
+mov #xxxx #yyyy       : 1+2+2   = 5 bytes // Move "yyyy" byte to "xxxx" byte
+mov #xxxx *yyyy       : 1+2+2   = 5 bytes // Move byte with address from "yyyy" byte to "xxxx" byte
+mov *xxxx #yyyy       : 1+2+2   = 5 bytes // Move "yyyy" byte to byte with address from "xxxx" byte
+mov *xxxx *yyyy       : 1+2+2   = 5 bytes // Move byte with address from "yyyy" byte to byte with address from "xxxx" byte
+mov #xxxx BYTE        : 1+2+1   = 4 bytes // Move BYTE value to "xxxx" byte
+add #xxxx #yyyy       : 1+2+2   = 5 bytes // Perform "add" operation on "xxxx" and "yyyy" bytes and store the result to "xxxx" byte (can set overflow flag)
+sub #xxxx #yyyy       : 1+2+2   = 5 bytes // Perform "sub" operation on "xxxx" and "yyyy" bytes and store the result to "xxxx" byte (can set overflow flag)
+and #xxxx #yyyy       : 1+2+2   = 5 bytes // Perform "and" operation on "xxxx" and "yyyy" bytes and store the result to "xxxx" byte
+or  #xxxx #yyyy       : 1+2+2   = 5 bytes // Perform "or" operation on "xxxx" and "yyyy" bytes and store the result to "xxxx" byte
+neg #xxxx             : 1+2     = 3 bytes // Perform "neg" operation on "xxxx" byte and store the result to "xxxx" byte
+xor #xxxx #yyyy       : 1+2+2   = 5 bytes // Perform "xor" operation on "xxxx" and "yyyy" bytes and store the result to "xxxx" byte
+ceq #xxxx #yyyy #zzzz : 1+2+2+2 = 7 bytes // Check if "yyyy" byte is equal to "zzzz" byte and store the result to "xxxx" byte
+cne #xxxx #yyyy #zzzz : 1+2+2+2 = 7 bytes // Check if "yyyy" byte is unequal to "zzzz" byte and store the result to "xxxx" byte
+cgt #xxxx #yyyy #zzzz : 1+2+2+2 = 7 bytes // Check if "yyyy" byte is greater than "zzzz" byte and store the result to "xxxx" byte
+cge #xxxx #yyyy #zzzz : 1+2+2+2 = 7 bytes // Check if "yyyy" byte is greater than or equal to "zzzz" byte and store the result to "xxxx" byte
+clt #xxxx #yyyy #zzzz : 1+2+2+2 = 7 bytes // Check if "yyyy" byte is less than "zzzz" byte and store the result to "xxxx" byte
+cle #xxxx #yyyy #zzzz : 1+2+2+2 = 7 bytes // Check if "yyyy" byte is less than or equal to "zzzz" byte and store the result to "xxxx" byte
+jmn #xxxx LABEL       : 1+2+2   = 5 bytes // Jump to LABEL byte if "xxxx" byte is not zero
+jmz #xxxx LABEL       : 1+2+2   = 5 bytes // Jump to LABEL byte if "xxxx" byte is zero
+jmp LABEL             : 1+2     = 3 bytes // Jump to LABEL
+uof                   :           1 byte  // Unset overflow flag
+
+----------------
+% MEMORY LAYOUT
+----------------
+[header: 8 bytes]
+[data: <.memory> bytes]
+[code: <code size> bytes]
+[funcs: <funcs count * ptr size> bytes]
